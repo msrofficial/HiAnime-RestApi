@@ -1,4 +1,4 @@
-#HiAnime REST API
+# HiAnime REST API
 
 **HiAnime REST API** is an unofficial anime data REST service that extracts information from **hianimez.to**.
 It exposes multiple endpoints for discovering anime, fetching detailed info, episodes, available servers, and stream URLs.
@@ -12,7 +12,7 @@ It exposes multiple endpoints for discovering anime, fetching detailed info, epi
 
 ---
 
-##Highlights
+## Highlights
 
 - Home sections (spotlight, trending, top airing, latest updates, etc.)
 - Anime listing endpoints with filters and categories
@@ -23,7 +23,7 @@ It exposes multiple endpoints for discovering anime, fetching detailed info, epi
 
 ---
 
-##Setup Guide
+## Setup Guide
 
 ### Requirements
 
@@ -61,13 +61,13 @@ http://localhost:3030/doc
 
 ---
 
-##Deploy to Render
+## Deploy to Render
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/msrofficial/HiAnime-RestApi)
 
 ---
 
-##API Reference
+## API Reference
 
 Base path:
 
@@ -86,7 +86,7 @@ Standard response format:
 
 ---
 
-##Home Data
+## Home Data
 
 ```http
 GET /home
@@ -96,7 +96,7 @@ Returns spotlight anime, trending titles, top airing shows, latest episodes, gen
 
 ---
 
-##Spotlight
+## Spotlight
 
 ```http
 GET /spotlight
@@ -106,7 +106,7 @@ Provides spotlight anime data.
 
 ---
 
-##Top Ten
+## Top Ten
 
 ```http
 GET /topten
@@ -116,7 +116,7 @@ Returns the current top ten anime list.
 
 ---
 
-##Anime Listings
+## Anime Listings
 
 ```http
 GET /{query}?page={page}
@@ -141,7 +141,7 @@ Available queries:
 
 ---
 
-##A–Z Listing
+## A–Z Listing
 
 ```http
 GET /az-list/{letter}?page={page}
@@ -155,7 +155,7 @@ Supported values:
 
 ---
 
-##Genre-Based Listing
+## Genre-Based Listing
 
 ```http
 GET /genre/{genre}?page={page}
@@ -171,7 +171,7 @@ supernatural, thriller, vampire
 
 ---
 
-##Anime Information
+## Anime Information
 
 ```http
 GET /anime/{animeId}
@@ -181,13 +181,13 @@ Returns detailed anime info including episodes, recommendations, and related tit
 
 ---
 
-##Search
+## Search
 
 ```http
 GET /search?keyword={query}&page={page}
 ```
 
-###Search Suggestions
+### Search Suggestions
 
 ```http
 GET /search/suggestion?keyword={query}
@@ -195,7 +195,7 @@ GET /search/suggestion?keyword={query}
 
 ---
 
-##Episodes & Streaming
+## Episodes & Streaming
 
 ```http
 GET /episodes/{animeId}
@@ -217,7 +217,7 @@ Includes HLS stream URLs, subtitle tracks, and intro/outro timestamps.
 
 ---
 
-##Contributing
+## Contributing
 
 - Contributions and pull requests are welcome
 - Please open an issue for bugs or feature requests
@@ -228,13 +228,14 @@ https://github.com/msrofficial/HiAnime-RestApi/issues
 ---
 
 
-##Credits
+## Credits
 
 - consumet.ts
 - api.consumet.org
 
 ---
 
-##Support
+## Support
 
 If you find this project useful, consider giving the repository a star.
+![Star History](https://starchart.cc/msrofficial/HiAnime-RestApi.svg)
