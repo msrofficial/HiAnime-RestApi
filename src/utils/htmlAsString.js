@@ -581,14 +581,14 @@ bun run dev
         }
 
         function copyToClipboard(button) {
-            const code = `git clone https://github.com/msrofficial/HiAnime-RestApi.git
+            const code = \`git clone https://github.com/msrofficial/HiAnime-RestApi.git
 cd HiAnime-RestApi
 bun install
-bun run dev`;
+bun run dev\`;
             
             navigator.clipboard.writeText(code).then(() => {
                 const originalContent = button.innerHTML;
-                button.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                button.innerHTML = \`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>\`;
                 setTimeout(() => {
                     button.innerHTML = originalContent;
                 }, 2000);
