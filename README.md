@@ -1,83 +1,81 @@
-# 📺 hianime-API
+#HiAnime REST API
 
-**hianime-API** is an unofficial REST API that scrapes anime data from **hianimez.to**.  
-It provides endpoints for anime discovery, details, episodes, servers, and streaming links.
+**HiAnime REST API** is an unofficial anime data REST service that extracts information from **hianimez.to**.
+It exposes multiple endpoints for discovering anime, fetching detailed info, episodes, available servers, and stream URLs.
 
-> ⚠️ **Important**
+> **Notice**
 >
-> - This API is **unofficial** and not affiliated with hianimez.to
-> - No hosted instance exists — **deploy your own**
-> - All content belongs to its original owners
-> - This project is for **educational and personal use only**
+> - This project is **not official** and has no association with hianimez.to  
+> - There is **no public hosted API** — you must deploy it yourself  
+> - All anime content and media rights belong to their respective owners  
+> - Intended strictly for **learning and personal projects**
 
 ---
 
-## ✨ Features
+##Highlights
 
-- Anime home page data (trending, spotlight, top airing, etc.)
-- Anime listings with filters (genre, A–Z, categories)
-- Detailed anime information
-- Episode lists
-- Streaming servers & HLS links
-- Search & search suggestions
-
----
-
-## 💻 Installation
-
-### Prerequisites
-
-- **Bun** (required)
-
-Install Bun → https://bun.sh/docs/installation
+- Home sections (spotlight, trending, top airing, latest updates, etc.)
+- Anime listing endpoints with filters and categories
+- Complete anime metadata
+- Episode lists per anime
+- Streaming servers and HLS stream URLs
+- Search with auto-suggestions
 
 ---
 
-### Local Setup
+##Setup Guide
+
+### Requirements
+
+- **Bun runtime** (mandatory)
+
+Install Bun from: https://bun.sh/docs/installation
+
+---
+
+### Run Locally
 
 ```bash
-git clone https://github.com/yahyaMomin/hianime-API.git
-cd hianime-API
+git clone https://github.com/msrofficial/HiAnime-RestApi.git
+cd HiAnime-RestApi
 bun install
 bun run dev
 ```
 
-Server runs at:
+The development server will start at:
 
 ```
 http://localhost:3030
 ```
 
-now vist /doc for intrective docs
+Interactive API documentation is available at:
 
-```bash
+```
 http://localhost:3030/doc
 ```
 
-> ⚠️ **Important**
+> **Important Notes**
 >
-> - You Cannot Run this Projct Directly Using Nodemon or node
-> - You Need to Build Project using tsup in ESM module To Run Using Node
+> - This project cannot be started directly with `node` or `nodemon`
+> - You must build it using **tsup** with **ESM output** before running under Node.js
 
 ---
 
----
+##Deploy to Render
 
-### Deploy on Render
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yahyaMomin/hianime-API)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/msrofficial/HiAnime-RestApi)
 
 ---
 
-## 📚 API Documentation
+##API Reference
 
-Base URL:
+Base path:
 
 ```
 /api/v1
 ```
 
-All responses follow:
+Standard response format:
 
 ```json
 {
@@ -88,140 +86,108 @@ All responses follow:
 
 ---
 
-## 🏠 Home Page
+##Home Data
 
 ```http
 GET /home
 ```
 
-Returns spotlight, trending, top airing, latest episodes, genres, and more.
+Returns spotlight anime, trending titles, top airing shows, latest episodes, genres, and more.
 
 ---
-## 🏠 spotlight Page
+
+##Spotlight
 
 ```http
 GET /spotlight
 ```
 
-Returns spotlight.
+Provides spotlight anime data.
 
 ---
-## 🏠 topten Page
+
+##Top Ten
 
 ```http
 GET /topten
 ```
 
-Returns topTen.
+Returns the current top ten anime list.
 
 ---
 
-## 📃 Anime List
+##Anime Listings
 
 ```http
 GET /{query}?page={page}
 ```
 
-Supports:
+Available queries:
 
- - top-airing
- - most-popular
- - most-favorite
- - completed
- - recently-added
- - recently-updated
- - top-upcoming
- - subbed-anime
- - dubbed-anime
- - movie
- - tv
- - ova
- - ona
- - special
+- top-airing
+- most-popular
+- most-favorite
+- completed
+- recently-added
+- recently-updated
+- top-upcoming
+- subbed-anime
+- dubbed-anime
+- movie
+- tv
+- ova
+- ona
+- special
 
 ---
-## 📃 AZ List
+
+##A–Z Listing
 
 ```http
 GET /az-list/{letter}?page={page}
 ```
 
-Supports:
+Supported values:
 
- - A to Z
- - 0 to 9
- - All
+- A–Z
+- 0–9
+- All
 
 ---
-## 📃 Genre Anime List
+
+##Genre-Based Listing
 
 ```http
 GET /genre/{genre}?page={page}
 ```
 
-Supports:
+Supported genres include:
 
- - action
- - adventure
- - cars
- - comedy
- - dementia
- - demons
- - drama
- - ecchi
- - fantasy
- - game
- - harem
- - historical
- - horror
- - isekai
- - josei
- - kids
- - magic
- - martial arts
- - mecha
- - military
- - music
- - mystery
- - parody
- - police
- - psychological
- - romance
- - samurai
- - school
- - sci-fi
- - seinen
- - shoujo
- - shoujo ai
- - shounen
- - shounen ai
- - slice of life
- - space
- - sports
- - super power
- - supernatural
- - thriller
- - vampire
+action, adventure, cars, comedy, dementia, demons, drama, ecchi, fantasy, game, harem,
+historical, horror, isekai, josei, kids, magic, martial arts, mecha, military, music,
+mystery, parody, police, psychological, romance, samurai, school, sci-fi, seinen,
+shoujo, shoujo-ai, shounen, shounen-ai, slice-of-life, space, sports, super-power,
+supernatural, thriller, vampire
 
 ---
 
-## 🎬 Anime Details
+##Anime Information
 
 ```http
 GET /anime/{animeId}
 ```
 
-Returns full anime metadata, episodes info, related & recommended anime.
+Returns detailed anime info including episodes, recommendations, and related titles.
 
 ---
 
-## 🔍 Search
+##Search
 
 ```http
 GET /search?keyword={query}&page={page}
 ```
 
-### Suggestions
+###Search Suggestions
 
 ```http
 GET /search/suggestion?keyword={query}
@@ -229,64 +195,46 @@ GET /search/suggestion?keyword={query}
 
 ---
 
-## 📺 Episodes
+##Episodes & Streaming
 
 ```http
 GET /episodes/{animeId}
 ```
 
-### Servers
+### Episode Servers
 
 ```http
 GET /servers?id={episodeId}
 ```
 
-### Streaming
+### Stream Data
 
 ```http
 GET /stream?id={episodeId}&server={server}&type={sub|dub}
 ```
 
-Returns HLS links, subtitles, intro/outro timestamps.
+Includes HLS stream URLs, subtitle tracks, and intro/outro timestamps.
 
 ---
 
-## 👨‍💻 Development & Contribution
+##Contributing
 
-- Pull requests welcome
-- Open issues for bugs or features
+- Contributions and pull requests are welcome
+- Please open an issue for bugs or feature requests
 
-Issues → https://github.com/yahyamomin/hianime-API/issues
-
----
-
-## 🎨 Frontend Example
-
-Reference frontend:
-
-https://github.com/yahyamomin/watanuki
+Issues:
+https://github.com/msrofficial/HiAnime-RestApi/issues
 
 ---
 
-## ✨ Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=yahyamomin/hianime-API)](https://github.com/yahyamomin/hianime-API/graphs/contributors)
-
----
-
-## 🤝 Credits
+##Credits
 
 - consumet.ts
 - api.consumet.org
 
 ---
 
-## 🌟 Support
+##Support
 
-Star the repo if it helped you.
-
----
-
-## 📈 Star History
-
-![Star History](https://starchart.cc/yahyamomin/hianime-API.svg)
+If you find this project useful, consider giving the repository a star.
