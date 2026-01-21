@@ -1,0 +1,35 @@
+name: Unzip Flatten and Clean
+on:
+  push:
+    paths:
+      - '**.zip'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  unzip-flatten:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract Move and Cleanup
+        run: |
+          mkdir -p temp_extract
+          unzip -q *.zip -d temp_extract
+          INNER_FOLDER=$(ls temp_extract | head -n 1)
+          cp -rf temp_extract/$INNER_FOLDER/* .
+          cp -rf temp_extract/$INNER_FOLDER/.* . 2>/dev/null || true
+          rm -rf temp_extract
+          rm *.zip
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Unzipped, flattened and cleaned up" || echo "No changes to commit"
+          git push
+          
